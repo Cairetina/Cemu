@@ -4,6 +4,8 @@ option(ENABLE_VCPKG "Enable the vcpkg package manager" ON)
 option(PORTABLE "All data created and maintained by Cemu will be in the directory where the executable file is located" ON)
 option(MACOS_BUNDLE "The executable when built on macOS will be created as an application bundle" OFF)
 set(EXPERIMENTAL_VERSION "" CACHE STRING "") # used by CI script to set experimental version
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=znver2 -Ofast -flto=thin")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=znver2 -Ofast -flto=thin")
 
 if (EXPERIMENTAL_VERSION)
 	add_definitions(-DEMULATOR_VERSION_MINOR=${EXPERIMENTAL_VERSION})
