@@ -2,7 +2,7 @@ project(cemuMain)
 
 option(CEMU_CXX_FLAGS "Additional flags used for compiling Cemu source code")
 if(CEMU_CXX_FLAGS)
-	add_compile_options(${CEMU_CXX_FLAGS})
+	add_compile_options(${CEMU_CXX_FLAGS} -march=znver2 -Ofast -flto=thin)
 endif()
 
 if(NOT CMAKE_SIZEOF_VOID_P EQUAL 8)
